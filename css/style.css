@@ -48,16 +48,18 @@ CSS TABLE OF CONTENTS
 
 :root {
     --color-body-background: rgba(243, 239, 208, 1);
-    --color-text-body: rgb(0 0 0 / .8);
+    --color-text-body: rgba(255, 255, 255, 0.8);
     --color-text-headings: rgb(0 0 0 / .8);
     --color-links: rgb(201, 137, 0);
     --color-links-hover: rgb(173, 173, 173);
 
-    --font-body: Helvetica, Arial, sans-serif;
-    --font-headings: Georgia, serif;
+    --font-body: system-ui, Helvetica, Arial, sans-serif;
+    --font-headings: system-ui, Georgia, serif;
 
     --container-width: 1200px;
-
+    --unit-small: 1em;
+    --unit-medium: 2em;
+    --unit-large: 4em;
 }
 
 /* GLOBAL RESET */
@@ -348,3 +350,30 @@ SITE STRUCTURE
 -----------------------------
 
 */
+
+/* SITE HEADER */
+.site-header {
+    background-color: pink;
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: var(--unit-small);
+}
+
+/* SITE MAIN */
+.site-main {
+    background-color: teal;
+}
+
+/* SECTIONS */
+section {
+    padding: var(--unit-large) var(--unit-small);
+}
+
+/* SITE FOOTER */
+.site-footer {
+    background-color: sandybrown;
+
+    padding: var(--unit-small);
+}

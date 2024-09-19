@@ -52,6 +52,9 @@ CSS TABLE OF CONTENTS
     --color-text-headings: rgb(0 0 0 / .8);
     --color-links: rgb(201, 137, 0);
     --color-links-hover: rgb(173, 173, 173);
+    --color-siteheader-links: rgba(243, 239, 208, 1);
+    --color-siteheader-background: rgb(178, 219, 206);
+    --color-hero-background: rgb(178, 200, 206);
 
     --font-body: system-ui, Helvetica, Arial, sans-serif;
     --font-headings: system-ui, Georgia, serif;
@@ -312,6 +315,14 @@ body {
         grid-column-start: 12;
     }
 
+    .row.swapped>*:first-child {
+        order: 2;
+    }
+
+    .row.swapped>*:last-child {
+        order: 1;
+    }
+
 
 }
 
@@ -351,14 +362,60 @@ SITE STRUCTURE
 
 */
 
+.hide-visually {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
 /* SITE HEADER */
 .site-header {
-    background-color: pink;
+    background-color: var(--color-siteheader-background);
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     padding: var(--unit-small);
+
+    a {
+        color: var(--color-siteheader-links);
+        text-decoration: none;
+    }
+
+    .site-logo {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+
+        h1 {
+            font-size: 2em;
+            margin: 0;
+            text-wrap: nowrap;
+        }
+    }
+
+    /* SITE-NAV */
+    .site-nav {
+        ul {
+            margin: 0;
+            list-style: none;
+            display: flex;
+            gap: 1em;
+        }
+
+        a {
+            display: block;
+            padding: 1em;
+        }
+    }
+
+}
+
+.site-logo {
+    display: grid;
+
+
 }
 
 /* SITE MAIN */
@@ -369,6 +426,12 @@ SITE STRUCTURE
 /* SECTIONS */
 section {
     padding: var(--unit-large) var(--unit-small);
+}
+
+/*  SECTIONS */
+.hero {
+    background-color: var(--color-hero-background);
+    padding-top: calc(4em + var(--unit-large));
 }
 
 /* SITE FOOTER */

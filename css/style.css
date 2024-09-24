@@ -54,7 +54,8 @@ CSS TABLE OF CONTENTS
     --color-links-hover: rgb(173, 173, 173);
     --color-siteheader-links: rgba(243, 239, 208, 1);
     --color-siteheader-background: rgb(178, 219, 206);
-    --color-hero-background: rgb(178, 200, 206);
+    --color-hero-background: rgb(236, 200, 168);
+    --color-sitefooter-background: rgb(244, 164, 96);
 
     --font-body: system-ui, Helvetica, Arial, sans-serif;
     --font-headings: system-ui, Georgia, serif;
@@ -372,16 +373,25 @@ SITE STRUCTURE
 .site-header {
     background-color: var(--color-siteheader-background);
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
     padding: var(--unit-small);
+
+    @media (min-width: 768px) {
+        position: absolute;
+        width: 100%;
+    }
 
     a {
         color: var(--color-siteheader-links);
         text-decoration: none;
     }
+
+
 
     .site-logo {
         display: flex;
@@ -400,8 +410,13 @@ SITE STRUCTURE
         ul {
             margin: 0;
             list-style: none;
-            display: flex;
-            gap: 1em;
+            padding: 0;
+        }
+
+        @media (min-width:768px) {
+            ul {
+                display: flex;
+            }
         }
 
         a {
@@ -436,7 +451,7 @@ section {
 
 /* SITE FOOTER */
 .site-footer {
-    background-color: sandybrown;
+    background-color: var(--color-sitefooter-background);
 
     padding: var(--unit-small);
 }

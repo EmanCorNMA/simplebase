@@ -29,7 +29,9 @@ CSS TABLE OF CONTENTS
     # HEADER
         # LOGO 
         # SITE-NAV
-
+# UI COMPONENTS
+    # BUTTONS
+    # CARDS
 
 -----------------------------
 -----------------------------
@@ -52,6 +54,8 @@ CSS TABLE OF CONTENTS
     --color-text-headings: rgb(0 0 0 / .8);
     --color-links: rgba(255, 255, 255, .8);
     --color-links-hover: rgb(173, 173, 173);
+    --color-links-light: rgba(255, 255, 255, .8);
+    --color-links-dark: rgb(0 0 0 / .8);
     --color-siteheader-links: rgba(243, 239, 208, 1);
     --color-siteheader-background: rgb(178, 219, 206);
     --color-hero-background: rgb(244, 164, 96);
@@ -478,5 +482,38 @@ section {
 
     a:hover {
         color: var(--color-links-hover);
+    }
+}
+
+
+/* UI COMPONENTS */
+
+/* BUTTONS */
+
+.button {
+    border: 0px solid var(--color-links);
+    display: inline-block;
+    padding: var(--unit-small);
+    color: var(--color-links);
+    background-color: var(--color-text-headings);
+    text-decoration: none;
+
+    &+.button {
+        margin-left: var(--unit-small);
+    }
+
+    &:hover {
+        background-color: var(--color-links-hover);
+        color: var(--color-links);
+    }
+
+    &.light {
+        border-color: var(--color-links-light);
+        background-color: var(--color-links-light);
+        color: var(--color-links-dark);
+
+        &:hover {
+            background-color: var(--color-links-hover);
+        }
     }
 }

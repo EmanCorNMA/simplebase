@@ -50,12 +50,15 @@ CSS TABLE OF CONTENTS
     --color-body-background: rgba(243, 239, 208, 1);
     --color-text-body: rgba(255, 255, 255, 0.8);
     --color-text-headings: rgb(0 0 0 / .8);
-    --color-links: rgb(201, 137, 0);
+    --color-links: rgba(255, 255, 255, .8);
     --color-links-hover: rgb(173, 173, 173);
     --color-siteheader-links: rgba(243, 239, 208, 1);
     --color-siteheader-background: rgb(178, 219, 206);
-    --color-hero-background: rgb(236, 200, 168);
+    --color-hero-background: rgb(244, 164, 96);
+    --color-hero-text: rgba(255, 255, 255, .8);
     --color-sitefooter-background: rgb(244, 164, 96);
+    --color-sitefooter-text: rgba(255, 255, 255, .8);
+    --color-sitefooter-links: rgba(255, 255, 255, .8);
 
     --font-body: system-ui, Helvetica, Arial, sans-serif;
     --font-headings: system-ui, Georgia, serif;
@@ -447,6 +450,13 @@ section {
 .hero {
     background-color: var(--color-hero-background);
     padding-top: calc(4em + var(--unit-large));
+
+    h1,
+    h2,
+    h3,
+    p {
+        color: var(--color-hero-text);
+    }
 }
 
 /* SITE FOOTER */
@@ -454,4 +464,19 @@ section {
     background-color: var(--color-sitefooter-background);
 
     padding: var(--unit-small);
+
+    h1,
+    h2,
+    h3,
+    p {
+        color: var(--color-sitefooter-text);
+    }
+
+    a {
+        color: var(--color-sitefooter-links);
+    }
+
+    a:hover {
+        color: var(--color-links-hover);
+    }
 }

@@ -29,6 +29,7 @@ CSS TABLE OF CONTENTS
     # HEADER
         # LOGO 
         # SITE-NAV
+        #SITE-HEADER-ON-TOP-OF-HERO
 # UI COMPONENTS
     # BUTTONS
     # CARDS
@@ -57,7 +58,7 @@ CSS TABLE OF CONTENTS
     --color-links-light: rgba(255, 255, 255, .8);
     --color-links-dark: rgb(0 0 0 / .8);
     --color-siteheader-links: rgba(243, 239, 208, 1);
-    --color-siteheader-background: rgb(178, 219, 206);
+    --color-siteheader-background: rgb(244, 164, 96);
     --color-hero-background: rgb(244, 164, 96);
     --color-hero-text: rgba(255, 255, 255, .8);
     --color-sitefooter-background: rgb(244, 164, 96);
@@ -370,15 +371,16 @@ SITE STRUCTURE
 
 */
 
-.hide-visually {
+/*.hide-visually {
     position: absolute;
     top: -9999px;
     left: -9999px;
 }
+    */
 
 /* SITE HEADER */
 .site-header {
-    background-color: var(--color-siteheader-background);
+
 
     @media (min-width: 768px) {
         display: flex;
@@ -388,17 +390,14 @@ SITE STRUCTURE
 
     padding: var(--unit-small);
 
-    @media (min-width: 768px) {
-        position: absolute;
-        width: 100%;
-    }
+
+    /* REMOVE TEXT DECORATION */
 
     a {
-        color: var(--color-siteheader-links);
         text-decoration: none;
     }
 
-
+    /* SITE LOGO */
 
     .site-logo {
         display: flex;
@@ -430,13 +429,31 @@ SITE STRUCTURE
             display: block;
             padding: 1em;
         }
+
+
+
     }
 
 }
 
-.site-logo {
-    display: grid;
 
+/* SITE HEADER ON TOP OF HEADER */
+
+.site-header.on-top-of-hero {
+    @media (min-width: 768px) {
+        position: absolute;
+        width: 100%;
+
+        &+.site-main>.hero {
+            padding-top: clac(4em + var (--unit-large));
+        }
+    }
+
+    @media (max-width: 768px) {
+        a {
+            color: var(--color-links-dark);
+        }
+    }
 
 }
 

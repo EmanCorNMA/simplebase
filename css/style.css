@@ -29,6 +29,7 @@ CSS TABLE OF CONTENTS
     # HEADER
         # LOGO 
         # SITE-NAV
+            #TOGGLE MENU
         #SITE-HEADER-ON-TOP-OF-HERO
 # UI COMPONENTS
     # BUTTONS
@@ -182,10 +183,11 @@ body {
 /* GRID */
 
 .row {
-    --gridgap: 1em;
+    --gridgap: 2em;
 }
 
 .row>* {
+    margin-top: var(--gridgap);
     margin-bottom: var(--gridgap);
 }
 
@@ -413,6 +415,7 @@ SITE STRUCTURE
 
     /* SITE-NAV */
     .site-nav {
+
         ul {
             margin: 0;
             list-style: none;
@@ -430,12 +433,76 @@ SITE STRUCTURE
             padding: 1em;
         }
 
+        /* TOGLE MENU */
 
 
+        .site-menu-button {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        &.toggle-menu {
+            .site-menu-button {
+                display: block;
+                padding: .5em;
+                position: relative;
+                z-index: 100;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .site-menu {
+                position: fixed;
+                top: 0;
+                right: 0;
+                background-color: teal;
+                width: 100%;
+                min-height: 100svh;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: 4vw;
+
+                a {
+                    padding: 2vh 2vw;
+                }
+            }
+
+            &[data-menustate="open"] {
+                .site-menu-button {
+                    position: fixed;
+                    z-index: 100;
+                }
+
+                .site-menu {
+                    transform: translateX(0);
+                    transition: .5s;
+                }
+
+
+            }
+
+            &[data-menustate="closed"] {
+                .site-menu {
+
+                    transform: translateX(100%);
+                    transition: .5s;
+                }
+            }
+
+        }
+    }
+
+    /* IF TOGGLE MENU DISPLAY LOGO ON LEFT AND MENU ON RIGHT ON ALL SCREENS*/
+    &:has(.toggle-menu) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
 }
-
 
 /* SITE HEADER ON TOP OF HEADER */
 

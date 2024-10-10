@@ -15,3 +15,11 @@ toggleMenuButton.onclick = function () {
     }
 
 };
+
+const toggleMenuLinks = document.querySelectorAll(".toggle-menu a");
+toggleMenuLinks.forEach((el) => {
+    el.onclick = () => {
+        toggleMenu.setAttribute('data-menustate', 'closed');
+    }
+
+});

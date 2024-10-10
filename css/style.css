@@ -33,7 +33,11 @@ CSS TABLE OF CONTENTS
         #SITE-HEADER-ON-TOP-OF-HERO
 # UI COMPONENTS
     # BUTTONS
-    # CARDS
+
+# ANIMATION
+    # SMOOTH SCROLLING
+
+# CUSTOM STYLING
 
 -----------------------------
 -----------------------------
@@ -51,17 +55,32 @@ CSS TABLE OF CONTENTS
 /* GLOBAL VARIABLES */
 
 :root {
-    --color-body-background: rgba(243, 239, 208, 1);
+
+
+    /*--color-body-background: rgb(0, 0, 0);
     --color-text-body: rgba(255, 255, 255, 0.8);
+    --color-text-headings: rgba(255, 255, 255, 1);*/
+
+    --color-body-background: rgba(243, 239, 208, 1);
+    --color-text-body: rgba(0, 0, 0, 0.8);
     --color-text-headings: rgb(0 0 0 / .8);
+
+    --site-main-background: teal;
+
+    /* LINKS COLOR */
     --color-links: rgba(255, 255, 255, .8);
     --color-links-hover: rgb(173, 173, 173);
     --color-links-light: rgba(255, 255, 255, .8);
     --color-links-dark: rgb(0 0 0 / .8);
+    /* FOOTER COLOR */
     --color-siteheader-links: rgba(243, 239, 208, 1);
     --color-siteheader-background: rgb(244, 164, 96);
+    /* MENU COLOR */
+    --site-menu-background: teal;
+    /* HERO COLOR */
     --color-hero-background: rgb(244, 164, 96);
     --color-hero-text: rgba(255, 255, 255, .8);
+    /* FOOTER COLOR */
     --color-sitefooter-background: rgb(244, 164, 96);
     --color-sitefooter-text: rgba(255, 255, 255, .8);
     --color-sitefooter-links: rgba(255, 255, 255, .8);
@@ -118,6 +137,7 @@ h1,
 h2,
 h3 {
     font-family: var(--font-headings);
+    margin: .4em 0;
 
 }
 
@@ -414,7 +434,7 @@ SITE STRUCTURE
     }
 
     /* SITE-NAV */
-    .site-nav {
+    .site-header-nav {
 
         ul {
             margin: 0;
@@ -432,101 +452,173 @@ SITE STRUCTURE
             display: block;
             padding: 1em;
         }
+    }
+}
 
-        /* TOGLE MENU */
+/* TOGLE MENU */
 
 
-        .site-menu-button {
-            display: flex;
-            flex-direction: row-reverse;
+.site-menu-button {
+    display: none;
+}
+
+.toggle-menu {
+
+    /* SET TOGGLE MENU COLORS */
+    --color-togglemenu-text: black;
+    --color-togglemenu-background: teal;
+
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    /* SHOW MENU BUTTON IF USING TOGGLE NAV */
+    .site-menu-button {
+        display: block;
+        background-color: transparent;
+        border: 1px solid var(--color-siteheader-links);
+        color: var(--color-siteheader-links);
+        padding: .5em;
+        position: relative;
+        z-index: 100;
+
+        /* ENABLE ANIMATION */
+        transition: .4s all ease-out;
+
+        /* RESET BUTTON FONT SIZE TO SAME AS SITE HEADER NAV */
+        font-size: inherit;
+
+        &:hover {
+            cursor: pointer;
         }
 
-        &.toggle-menu {
-            .site-menu-button {
-                display: block;
-                padding: .5em;
-                position: relative;
-                z-index: 100;
+        &:has(svg) {
 
-                &:hover {
-                    cursor: pointer;
-                }
+            /* VERTICALLY ALIGN AND ADD GAP */
+            display: flex;
+            align-items: center;
+            gap: calc(var(--unit-small) / 2);
+
+            /* REMOVE BORDER */
+            border: none;
+
+            /* SET SVG COLOR */
+            svg {
+                fill: var(--color-siteheader-links);
             }
 
-            .site-menu {
-                position: fixed;
-                top: 0;
-                right: 0;
-                background-color: teal;
-                width: 100%;
-                min-height: 100svh;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                font-size: 4vw;
-
-                a {
-                    padding: 2vh 2vw;
-                }
+            /* ADD SUPPORT FOR SVG ANIMATION */
+            svg>* {
+                transition: .2s all ease-out;
+                transform-origin: center;
             }
 
-            &[data-menustate="open"] {
-                .site-menu-button {
-                    position: fixed;
-                    z-index: 100;
-                }
+        }
 
-                .site-menu {
-                    transform: translateX(0);
-                    transition: .5s;
-                }
+    }
 
+    .site-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 50;
+        background-color: var(--color-togglemenu-background);
+        width: 100%;
+        min-height: 100svh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 3vw;
+        transition: .4s all ease-out;
 
-            }
-
-            &[data-menustate="closed"] {
-                .site-menu {
-
-                    transform: translateX(100%);
-                    transition: .5s;
-                }
-            }
-
+        a {
+            padding: 2vh 2vw;
+            color: var(--color-togglemenu-text);
         }
     }
 
-    /* IF TOGGLE MENU DISPLAY LOGO ON LEFT AND MENU ON RIGHT ON ALL SCREENS*/
-    &:has(.toggle-menu) {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    &[data-menustate="open"] {
+
+        /* CHANGE COLORS TO TOGGLE MENU COLORS WHEN OPEN */
+        --color-siteheader-links: var(--color-togglemenu-text);
+
+        /* SET MENU BUTTON TO FIXED WHEN MENU IS OPEN */
+        .site-menu-button {
+            position: fixed;
+            z-index: 100;
+        }
+
+        /* SHOW THE SITE MENU WHEN OPEN */
+        .site-menu {
+            transform: translateX(0);
+        }
+
+        /* ANIMATE THE NAVICON / HAMBURGER ICON */
+        /* ADD SUPPORT FOR NAVICON/HAMBURGER ICON */
+        .site-menu-button svg {
+            .simple-navicon-top {
+                transform: translate(-21%, 25%) rotate(45deg);
+            }
+
+            .simple-navicon-middle {
+                opacity: 0;
+            }
+
+            .simple-navicon-bottom {
+                transform: translate(-21%, -25%) rotate(-45deg);
+            }
+        }
+
+    }
+
+    &[data-menustate="closed"] {
+
+        /* MOVE THE SIDE MENU TO THE RIGHT WHEN CLOSED */
+        .site-menu {
+            transform: translateX(100%);
+        }
+    }
+}
+
+/* IF TOGGLE MENU DISPLAY LOGO ON LEFT AND MENU ON RIGHT ON ALL SCREENS */
+.site-header:has(.toggle-menu) {
+    display: flex;
+    justify-content: space-between;
+
+    .site-logo {
+        position: relative;
+        z-index: 100;
     }
 
 }
 
+
 /* SITE HEADER ON TOP OF HEADER */
 
 .site-header.on-top-of-hero {
-    @media (min-width: 768px) {
-        position: absolute;
-        width: 100%;
 
-        &+.site-main>.hero {
-            padding-top: clac(4em + var (--unit-large));
-        }
+    /* RENDER HEADER ON TOP OF HERO */
+    position: absolute;
+    width: 100%;
+
+    /* SET SITE HEADER LINK COLOR ON LARGE SCREENS */
+    --color-siteheader-links: var(--color-links-light);
+
+    a {
+        color: var(--color-siteheader-links);
     }
 
-    @media (max-width: 768px) {
-        a {
-            color: var(--color-links-dark);
-        }
+    /* ADD MORE SPACE ON TOP FOR THE ABSOLUTE HEADER */
+    &+.site-main>.hero {
+        padding-top: calc(4em + var(--unit-large));
     }
 
 }
 
 /* SITE MAIN */
 .site-main {
-    background-color: teal;
+    background-color: var(--site-main-background);
 }
 
 /* SECTIONS */
@@ -600,4 +692,25 @@ section {
             background-color: var(--color-links-hover);
         }
     }
+}
+
+/*
+-----------------------------
+-----------------------------
+------HH-------------HH-----
+------HH-------------HH------
+------HH-------------HH------
+-----------------------------
+------HHHHHHHHHHHHHHHHH------
+----HHH---------------HHH----
+---HH-------------------HH---
+-----------------------------
+-----------------------------
+*/
+
+/* ANIMATION */
+
+/* ADD SUPPORT FOR SMOOTH SCROLLING */
+html {
+    scroll-behavior: smooth;
 }

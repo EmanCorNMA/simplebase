@@ -14,21 +14,27 @@
 
     <header class="site-header on-top-of-hero">
         <div class="site-logo">
-            <a href="index.html"><!--<img src="https://via.placeholder.com/60" alt="site logo" width="60" height="60">-->
-                <svg width="60" height="60">
-
+            <a href="index.html"><img src="img/placeholder-logo-500x500.png" alt="site logo" width="60" height="60">
+                <!--<svg width="60" height="60">
                     <circle r="30" cx="30" cy="30" fill="#888"></circle>
-
-                </svg>
+                </svg>-->
             </a>
             <h1 class="hide-visually"><a href="index.html">Simple Base</a></h1>
         </div>
-        <nav class="site-nav toggle-menu" data-menustate="closed">
-            <button class="site-menu-button">Menu</button>
+        <nav class="site-header-nav toggle-menu" data-menustate="closed">
+            <button class="site-menu-button">
+                <span class="hide-visually"></span>
+                <svg class="simple-navicon" width="24" height="21">
+                    <rect class="simple-navicon-top" x="0" y="2" height="3" width="30"></rect>
+                    <rect class="simple-navicon-middle" x="0" y="9" height="3" width="30"></rect>
+                    <rect class="simple-navicon-bottom" x="0" y="16" height="3" width="30"></rect>
+                </svg>
+            </button>
             <ul class="site-menu">
                 <li><a href="index.html">home</a></li>
                 <li><a href="index.html">Products</a></li>
                 <li><a href="index.html">About</a></li>
+                <li><a href="#section1">Section 1</a></li>
             </ul>
         </nav>
     </header>
@@ -39,13 +45,13 @@
             <div class="container">
                 <div class="row swapped">
                     <div class="one-half">
-                        <img src="img/placeholder_2000x1500.png" alt="Hero Image" width="2000" height="1500">
+                        <img src="img/placeholder-2000x1500.png" alt="Hero Image" width="2000" height="1500">
                     </div>
                     <div class="one-half">
                         <h1>Hero Headline</h1>
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui voluptas sit labore quas
                             doloremque dignissimos laboriosam at earum dolor odio!</p>
-                        <a href="#" class="button light">Default Button</a>
+                        <a href="#section1" class="button light">Go to Section 1</a>
                     </div>
                 </div>
             </div>
@@ -56,10 +62,10 @@
 
 
 
-        <section>
+        <section id="section1">
             <div class="container">
                 <div class="row">
-                    <div class="one-half"><img src="img/placeholder_2000x1500.jpeg" alt="scammed"></div>
+                    <div class="one-half"><img src="img/placeholder-2000x1500.jpg" alt="scammed"></div>
                     <div class="one-half">
                         <h1>HEADING</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus maxime, consequuntur
@@ -77,7 +83,7 @@
         <section>
             <div class="container">
                 <div class="row swapped">
-                    <div class="one-half"><img src="img/placeholder_2000x1500.gif" alt="scammed"></div>
+                    <div class="one-half"><img src="img/placeholder-2000x1500.svg" alt="scammed"></div>
                     <div class="one-half">
                         <h1>HEADING</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus maxime, consequuntur
@@ -93,7 +99,7 @@
         <section>
             <div class="container">
                 <div class="row">
-                    <div class="one-half centered"><img src="img/placeholder_2000x1500.png" alt="scammed">
+                    <div class="one-half centered"><img src="img/placeholder-2000x1500.png" alt="scammed">
 
                         <h1>HEADING</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus maxime, consequuntur
@@ -118,7 +124,7 @@
                 </div>
                 <div class="one-fourth">
                     <h2>Pages</h2>
-                    <nav>
+                    <nav class="site-footer-nav">
                         <ul>
                             <li><a href="index.html">home</a></li>
                             <li><a href="index.html">Products</a></li>
